@@ -1,16 +1,7 @@
 function getComputerChoice() {
-	let random = (Math.random() * 2 + 1).toFixed(0);
-	let computerHand;
-	if (random == 1) {
-		computerHand = 'Rock';
-	}
-	else if (random == 2) {
-		computerHand = 'Paper';
-	}
-	else {
-		computerHand = 'Scissors';
-	}
-	return computerHand;
+	let random = (Math.random() * 2).toFixed(0);
+	let computerHand = ['rock','paper','scissors'];
+	return computerHand[random];
 };
 
 function playRound(playerSelection, computerSelection) {
