@@ -1,6 +1,6 @@
 function getComputerChoice() {
 	let random = (Math.random() * 2).toFixed(0);
-	let computerHand = ['rock','paper','scissors'];
+	let computerHand = ['rock', 'paper', 'scissors'];
 	return computerHand[random];
 };
 
@@ -10,35 +10,17 @@ function playRound(playerSelection, computerSelection) {
 	let win = 'You win!';
 	let lose = 'You lose!';
 	let draw = 'It\'s a draw!';
-
-	if (playerSelection == 'rock' && computerSelection == 'Rock') {
+	if (playerSelection === computerSelection) {
 		return `${draw} Your opponent choose ${computerSelection}!`;
 	}
-	else if (playerSelection == 'rock' && computerSelection == 'Paper') {
-		return `${lose} Your opponent choose ${computerSelection}!`;
-	}
-	else if (playerSelection == 'rock' && computerSelection == 'Scissors') {
+	else if (
+		(playerSelection === 'rock' && computerSelection === 'scissors') ||
+		(playerSelection === 'paper' && computerSelection === 'rock') ||
+		(playerSelection === 'scissors' && computerSelection === 'paper')) {
 		return `${win} Your opponent choose ${computerSelection}!`;
 	}
-
-	else if (playerSelection == 'paper' && computerSelection == 'Rock') {
-		return `${win} Your opponent choose ${computerSelection}!`;
-	}
-	else if (playerSelection == 'paper' && computerSelection == 'Paper') {
-		return `${draw} Your opponent choose ${computerSelection}!`;
-	}
-	else if (playerSelection == 'paper' && computerSelection == 'Scissors') {
+	else {
 		return `${lose} Your opponent choose ${computerSelection}!`;
-	}
-
-	else if (playerSelection == 'scissors' && computerSelection == 'Rock') {
-		return `${lose} Your opponent choose ${computerSelection}!`;
-	}
-	else if (playerSelection == 'scissors' && computerSelection == 'Paper') {
-		return `${win} Your opponent choose ${computerSelection}!`;
-	}
-	else if (playerSelection == 'scissors' && computerSelection == 'Scissors') {
-		return `${draw} Your opponent choose ${computerSelection}!`;
 	};
 };
 
