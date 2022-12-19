@@ -6,11 +6,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style-mobile.css">
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 
 <body>
+  <main>
+    <div class="computer-container">
+      <div class="computer-portrait">
+        <div class="computer-img"></div>
+      </div>
+    </div>
 
+    <div class="battleground-container">
+      <div class="timer-mobile"></div>
+      <div class="history-container-mobile">
+      </div>
+    </div>
+
+    <div class="player-container">
+      <div class="player-portrait">
+        <div class="player-img"></div>
+      </div>
+
+      <div class="buttons">
+        <button class="rock">✊</button>
+        <button class="paper">✋</button>
+        <button class="scissors">✌</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="description-container">
+    <div class="description">
+      <h2>Rules</h2>
+      <p>Paper beats Rock</p>
+      <p>Rock beats Scissors</p>
+      <p>Scissors beats Paper</p>
+    </div>
+  </div>
+
+  <div class="timer"></div>
+
+  <div class="history-container">
+  </div>
 </body>
 
 </html>
