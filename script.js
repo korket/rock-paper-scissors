@@ -7,6 +7,17 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 	playerSelection = clickedButton;
 	computerSelection = getComputerChoice();
+
+	if (computerSelection === 'rock') {
+		bgComputer.textContent = '✊';
+	}
+	else if (computerSelection === 'paper'){
+		bgComputer.textContent = '✋';
+	}
+	else {
+		bgComputer.textContent = '✌';
+	};
+
 	let win = 'You win!';
 	let lose = 'You lose!';
 	let draw = 'It\'s a draw!';
@@ -62,6 +73,7 @@ const btnRock = document.querySelector('.rock');
 const btnPaper = document.querySelector('.paper');
 const btnScissors = document.querySelector('.scissors');
 const bgPlayer = document.querySelector('.bg-player');
+const bgComputer = document.querySelector('.bg-computer');
 let clickedButton;
 
 btnRock.addEventListener('click', () => {
