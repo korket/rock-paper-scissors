@@ -5,7 +5,7 @@ function getComputerChoice() {
 };
 
 function playRound(playerSelection, computerSelection) {
-	playerSelection = prompt().toLowerCase();
+	playerSelection = clickedButton;
 	computerSelection = getComputerChoice();
 	let win = 'You win!';
 	let lose = 'You lose!';
@@ -57,3 +57,30 @@ function game() {
 		console.log(`It's shockingly a draw!`);
 	};
 };
+
+const btnRock = document.querySelector('.rock');
+const btnPaper = document.querySelector('.paper');
+const btnScissors = document.querySelector('.scissors');
+const bgPlayer = document.querySelector('.bg-player');
+let clickedButton;
+
+btnRock.addEventListener('click', () => {
+	clickedButton = 'rock';
+	bgPlayer.textContent = '✊';
+	playRound();
+	}
+);
+
+btnPaper.addEventListener('click', () => {
+	clickedButton = 'paper';
+	bgPlayer.textContent = '✋';
+	playRound();
+	}
+);
+
+btnScissors.addEventListener('click', () => {
+	clickedButton = 'scissors';
+	bgPlayer.textContent = '✌';
+	playRound();
+	}
+);
