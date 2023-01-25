@@ -3,6 +3,7 @@
 const btnRock = document.querySelector('.rock');
 const btnPaper = document.querySelector('.paper');
 const btnScissors = document.querySelector('.scissors');
+const buttons = document.querySelectorAll('.button');
 
 // battleground selectors
 
@@ -12,46 +13,67 @@ const history1 = document.querySelector('.history-1 p');
 const history2 = document.querySelector('.history-2 p');
 const history3 = document.querySelector('.history-3 p');
 const history4 = document.querySelector('.history-4 p');
+
+let clickedButton;
 let newResult;
 let lastResult;
-let clickedButton;
+let historyArray = [];
 
 btnRock.addEventListener('click', () => {
 	clickedButton = 'rock';
 	bgPlayer.textContent = '✊';
 
-	newResult = `✊🗙${playRound()}`;
+	newResult = `✊ˣ${playRound()}`;
 	bgResults = [];
 	bgResults.push(newResult);
-	if (bgResults.length === 4) {
-		bgResults.splice(0,1);
-	};
-	
-	historyArray = [];
-	historyArray.push(bgResults[0]);
-	history1.textContent = historyArray[0];
-	history2.textContent = historyArray[1];
-	console.log(bgResults);
-	console.log(historyArray);
-	console.log(bgResults);
 
-	return historyArray[0];
+	return historyArray.push(bgResults[0]);
 	}
 );
 
 btnPaper.addEventListener('click', () => {
 	clickedButton = 'paper';
 	bgPlayer.textContent = '✋';
-	playRound();
+	
+	newResult = `✋ˣ${playRound()}`;
+	bgResults = [];
+	bgResults.push(newResult);
+
+	return historyArray.push(bgResults[0]);
 	}
 );
 
 btnScissors.addEventListener('click', () => {
 	clickedButton = 'scissors';
 	bgPlayer.textContent = '✌';
-	playRound();
+	
+	newResult = `✌ˣ${playRound()}`;
+	bgResults = [];
+	bgResults.push(newResult);
+
+	return historyArray.push(bgResults[0]);
 	}
 );
+
+// history / result log
+
+for (const btn of buttons) {
+	btn.addEventListener('click', () => {
+		if (historyArray.length > 4) {
+			historyArray.splice(0,1);
+			history1.textContent = historyArray[3];
+			history2.textContent = historyArray[2];
+			history3.textContent = historyArray[1];
+			history4.textContent = historyArray[0];
+		}
+		else {
+		history1.textContent = historyArray[0];
+		history2.textContent = historyArray[1];
+		history3.textContent = historyArray[2];
+		history4.textContent = historyArray[3];
+		};
+	})
+};
 
 // game
 

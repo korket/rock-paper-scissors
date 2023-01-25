@@ -1,0 +1,78 @@
+@media (min-width: 1000px) {
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    color: white;
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 8fr 10px 2fr;
+    grid-template-rows: repeat(3,1fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+.description-container, .history-container {
+    display: grid;
+    height: 95vh;
+    border-radius: 10px;
+}
+
+.history-container-mobile {
+    display: none;
+}
+
+.computer-container, .player-container, .battleground-container {
+    background-color: #2a2a2a;
+}
+
+/* main -----------------------------------*/
+
+main {
+    /* background-color: #1a1a1a; */
+    display: grid;
+    height: 100vh;
+    grid-column: 2/3;
+    grid-row: 1/4;
+    align-content: space-between;
+}
+
+.computer-container {
+    height: 20vh;
+}
+
+.player-container {
+    height: 20vh;
+}
+
+.battleground-container {
+    height: 55vh;
+}
+
+/* sides ----------------------------------*/
+
+.description-container {
+    background-color: red;
+    margin-left: 1rem;
+    grid-column: 1/2;
+    grid-row: 1/4;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-container {
+    background-color: blue;
+    margin-right: 1rem;
+    grid-column: 4/5;
+    grid-row: 1/4;
+}
+};
