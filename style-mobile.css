@@ -130,6 +130,22 @@ main {
 	font-size: 3rem;
 }
 
+.computer-description {
+	height: 80%;
+	width: 65%;
+	background-color: #4a4a4a;
+	margin: .5rem;
+	border-radius: 10px;
+	display: flex;
+	padding: 1rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.computer-description p {
+	font-size: 1.2rem;
+}
+
 /* battleground */
 
 .battleground-container {
@@ -176,7 +192,14 @@ main {
 .history {
 	border-radius: 10px;
 	background-color: #3a3a3a;
-	display: grid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.history p {
+	font-size: 1.25rem;
+	/* background-color: red; */
 }
 
 /* player */
@@ -216,4 +239,7 @@ button {
 	border: none;
 	padding: .2rem;
 	background-color: #5a5a5a;
+	width: 50px;
+	height: 50px;
+	text-align: center;
 }
