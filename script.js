@@ -1,3 +1,60 @@
+// button selectors
+
+const btnRock = document.querySelector('.rock');
+const btnPaper = document.querySelector('.paper');
+const btnScissors = document.querySelector('.scissors');
+
+// battleground selectors
+
+const bgPlayer = document.querySelector('.bg-player');
+const bgComputer = document.querySelector('.bg-computer');
+const history1 = document.querySelector('.history-1 p');
+const history2 = document.querySelector('.history-2 p');
+const history3 = document.querySelector('.history-3 p');
+const history4 = document.querySelector('.history-4 p');
+let newResult;
+let lastResult;
+let clickedButton;
+
+btnRock.addEventListener('click', () => {
+	clickedButton = 'rock';
+	bgPlayer.textContent = '✊';
+
+	newResult = `✊🗙${playRound()}`;
+	bgResults = [];
+	bgResults.push(newResult);
+	if (bgResults.length === 4) {
+		bgResults.splice(0,1);
+	};
+	
+	historyArray = [];
+	historyArray.push(bgResults[0]);
+	history1.textContent = historyArray[0];
+	history2.textContent = historyArray[1];
+	console.log(bgResults);
+	console.log(historyArray);
+	console.log(bgResults);
+
+	return historyArray[0];
+	}
+);
+
+btnPaper.addEventListener('click', () => {
+	clickedButton = 'paper';
+	bgPlayer.textContent = '✋';
+	playRound();
+	}
+);
+
+btnScissors.addEventListener('click', () => {
+	clickedButton = 'scissors';
+	bgPlayer.textContent = '✌';
+	playRound();
+	}
+);
+
+// game
+
 function getComputerChoice() {
 	let random = (Math.random() * 2).toFixed(0);
 	let computerHand = ['rock', 'paper', 'scissors'];
@@ -10,12 +67,15 @@ function playRound(playerSelection, computerSelection) {
 
 	if (computerSelection === 'rock') {
 		bgComputer.textContent = '✊';
+		return '✊';
 	}
 	else if (computerSelection === 'paper'){
 		bgComputer.textContent = '✋';
+		return '✋';
 	}
 	else {
 		bgComputer.textContent = '✌';
+		return '✌';
 	};
 
 	let win = 'You win!';
@@ -68,31 +128,3 @@ function game() {
 		console.log(`It's shockingly a draw!`);
 	};
 };
-
-const btnRock = document.querySelector('.rock');
-const btnPaper = document.querySelector('.paper');
-const btnScissors = document.querySelector('.scissors');
-const bgPlayer = document.querySelector('.bg-player');
-const bgComputer = document.querySelector('.bg-computer');
-let clickedButton;
-
-btnRock.addEventListener('click', () => {
-	clickedButton = 'rock';
-	bgPlayer.textContent = '✊';
-	playRound();
-	}
-);
-
-btnPaper.addEventListener('click', () => {
-	clickedButton = 'paper';
-	bgPlayer.textContent = '✋';
-	playRound();
-	}
-);
-
-btnScissors.addEventListener('click', () => {
-	clickedButton = 'scissors';
-	bgPlayer.textContent = '✌';
-	playRound();
-	}
-);
