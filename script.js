@@ -5,24 +5,16 @@ const btnPaper = document.querySelector('.paper');
 const btnScissors = document.querySelector('.scissors');
 const buttons = document.querySelectorAll('.button');
 
-// battleground selectors
-
-const bgPlayer = document.querySelector('.bg-player');
-const bgComputer = document.querySelector('.bg-computer');
-const history1 = document.querySelector('.history-1 p');
-const history2 = document.querySelector('.history-2 p');
-const history3 = document.querySelector('.history-3 p');
-const history4 = document.querySelector('.history-4 p');
-const history1border = document.querySelector('.history-1');
-const history2border = document.querySelector('.history-2');
-const history3border = document.querySelector('.history-3');
-const history4border = document.querySelector('.history-4');
-
 // button clicks
 
 btnRock.addEventListener('click', () => playRound('✊'));
 btnPaper.addEventListener('click', () => playRound('✋'));
 btnScissors.addEventListener('click', () => playRound('✌'));
+
+// battleground selectors
+
+const bgPlayer = document.querySelector('.bg-player');
+const bgComputer = document.querySelector('.bg-computer');
 
 // game
 
@@ -68,7 +60,6 @@ function playRound(playerSelection, computerSelection) {
 	};
 };
 
-
 function game() {
 	let result;
 	let score;
@@ -102,6 +93,20 @@ function game() {
 	};
 };
 
+// history selectors
+
+const history1 = document.querySelector('.history-1 p');
+const history2 = document.querySelector('.history-2 p');
+const history3 = document.querySelector('.history-3 p');
+const history4 = document.querySelector('.history-4 p');
+const history1border = document.querySelector('.history-1');
+const history2border = document.querySelector('.history-2');
+const history3border = document.querySelector('.history-3');
+const history4border = document.querySelector('.history-4');
+
+const histories = [history1, history2, history3, history4];
+const historiesBorder = [history1border, history2border, history3border, history4border];
+
 // history / result log
 
 let historyArray = ['','','',''];
@@ -116,9 +121,6 @@ for (const btn of buttons) {
 		historyBorder();
 	});
 };
-
-const histories = [history1, history2, history3, history4];
-const historiesBorder = [history1border, history2border, history3border, history4border];
 
 function historyBorder() {
 	for (const history of histories) {
@@ -141,4 +143,4 @@ function historyBorder() {
 			historiesBorder[histories.indexOf(history)].setAttribute('class','history lose');
 		}
 	}
-}
+};
