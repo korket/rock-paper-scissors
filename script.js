@@ -21,18 +21,9 @@ let historyArray = [];
 
 // button clicks
 
-function buttonClickResult(button, buttonIcon) {
-	clickedButton = button;
-	bgPlayer.textContent = buttonIcon;
-	bgResults = [];
-	newResult = `${buttonIcon}ˣ${playRound()}`;
-	bgResults.push(newResult);
-	return historyArray.push(bgResults[0]);
-}
-
-btnRock.addEventListener('click', () => buttonClickResult('rock', '✊'));
-btnPaper.addEventListener('click', () => buttonClickResult('paper', '✋'));
-btnScissors.addEventListener('click', () => buttonClickResult('scissors', '✌'));
+btnRock.addEventListener('click', () => playRound('✊'));
+btnPaper.addEventListener('click', () => playRound('✋'));
+btnScissors.addEventListener('click', () => playRound('✌'));
 
 // history / result log
 
@@ -40,54 +31,55 @@ historyArray = ['','','',''];
 
 for (const btn of buttons) {
 	btn.addEventListener('click', () => {
-			historyArray.splice(0,1);
-			history1.textContent = historyArray[3];
-			history2.textContent = historyArray[2];
-			history3.textContent = historyArray[1];
-			history4.textContent = historyArray[0];
+		historyArray.splice(0,1);
+		history1.textContent = historyArray[3];
+		history2.textContent = historyArray[2];
+		history3.textContent = historyArray[1];
+		history4.textContent = historyArray[0];
 	});
 };
-
 
 // game
 
 function getComputerChoice() {
 	let random = (Math.floor(Math.random() * 3));
-	let computerHand = ['rock', 'paper', 'scissors'];
+	let computerHand = ['✊', '✋', '✌'];
 	return computerHand[random];
 };
 
+const computerDesc = document.querySelector('.computer-description');
+const computerScore = document.querySelector('.computer-score p span');
+const playerScore = document.querySelector('.player-score p span');
+
+computerScore.textContent = 0;
+playerScore.textContent = 0;
+
 function playRound(playerSelection, computerSelection) {
-	playerSelection = clickedButton;
 	computerSelection = getComputerChoice();
+ 	bgPlayer.textContent = playerSelection;
+	bgComputer.textContent = computerSelection;
+ 	bgResults = [];
+ 	newResult = `${playerSelection}ˣ${computerSelection}`;
+ 	bgResults.push(newResult);
+ 	historyArray.push(bgResults[0]);
 
-	if (computerSelection === 'rock') {
-		bgComputer.textContent = '✊';
-		return '✊';
-	}
-	else if (computerSelection === 'paper'){
-		bgComputer.textContent = '✋';
-		return '✋';
-	}
-	else {
-		bgComputer.textContent = '✌';
-		return '✌';
-	};
+	let win = 'You win...';
+	let lose = 'You lose...';
+	let draw = 'It\'s a draw...';
 
-	let win = 'You win!';
-	let lose = 'You lose!';
-	let draw = 'It\'s a draw!';
 	if (playerSelection === computerSelection) {
-		return `${draw} Your opponent choose ${computerSelection}!`;
+		computerDesc.textContent = `Beep... ${draw}`;
 	}
 	else if (
-		(playerSelection === 'rock' && computerSelection === 'scissors') ||
-		(playerSelection === 'paper' && computerSelection === 'rock') ||
-		(playerSelection === 'scissors' && computerSelection === 'paper')) {
-		return `${win} Your opponent choose ${computerSelection}!`;
+		(playerSelection === '✊' && computerSelection === '✌') ||
+		(playerSelection === '✋' && computerSelection === '✊') ||
+		(playerSelection === '✌' && computerSelection === '✋')) {
+		computerDesc.textContent = `${win} Beep...`;
+		playerScore.textContent++;
 	}
 	else {
-		return `${lose} Your opponent choose ${computerSelection}!`;
+		computerDesc.textContent = `${lose} Beep...`;
+		computerScore.textContent++;
 	};
 };
 
