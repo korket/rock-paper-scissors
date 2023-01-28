@@ -14,11 +14,6 @@ const history2 = document.querySelector('.history-2 p');
 const history3 = document.querySelector('.history-3 p');
 const history4 = document.querySelector('.history-4 p');
 
-let clickedButton;
-let newResult;
-let lastResult;
-let historyArray = [];
-
 // button clicks
 
 btnRock.addEventListener('click', () => playRound('✊'));
@@ -27,7 +22,7 @@ btnScissors.addEventListener('click', () => playRound('✌'));
 
 // history / result log
 
-historyArray = ['','','',''];
+let historyArray = ['','','',''];
 
 for (const btn of buttons) {
 	btn.addEventListener('click', () => {
@@ -41,18 +36,18 @@ for (const btn of buttons) {
 
 // game
 
-function getComputerChoice() {
-	let random = (Math.floor(Math.random() * 3));
-	let computerHand = ['✊', '✋', '✌'];
-	return computerHand[random];
-};
-
 const computerDesc = document.querySelector('.computer-description');
 const computerScore = document.querySelector('.computer-score p span');
 const playerScore = document.querySelector('.player-score p span');
 
 computerScore.textContent = 0;
 playerScore.textContent = 0;
+
+function getComputerChoice() {
+	let random = (Math.floor(Math.random() * 3));
+	let computerHand = ['✊', '✋', '✌'];
+	return computerHand[random];
+};
 
 function playRound(playerSelection, computerSelection) {
 	computerSelection = getComputerChoice();
