@@ -13,26 +13,16 @@ const history1 = document.querySelector('.history-1 p');
 const history2 = document.querySelector('.history-2 p');
 const history3 = document.querySelector('.history-3 p');
 const history4 = document.querySelector('.history-4 p');
+const history1border = document.querySelector('.history-1');
+const history2border = document.querySelector('.history-2');
+const history3border = document.querySelector('.history-3');
+const history4border = document.querySelector('.history-4');
 
 // button clicks
 
 btnRock.addEventListener('click', () => playRound('✊'));
 btnPaper.addEventListener('click', () => playRound('✋'));
 btnScissors.addEventListener('click', () => playRound('✌'));
-
-// history / result log
-
-let historyArray = ['','','',''];
-
-for (const btn of buttons) {
-	btn.addEventListener('click', () => {
-		historyArray.splice(0,1);
-		history1.textContent = historyArray[3];
-		history2.textContent = historyArray[2];
-		history3.textContent = historyArray[1];
-		history4.textContent = historyArray[0];
-	});
-};
 
 // game
 
@@ -111,3 +101,44 @@ function game() {
 		console.log(`It's shockingly a draw!`);
 	};
 };
+
+// history / result log
+
+let historyArray = ['','','',''];
+
+for (const btn of buttons) {
+	btn.addEventListener('click', () => {
+		historyArray.splice(0,1);
+		history1.textContent = historyArray[3];
+		history2.textContent = historyArray[2];
+		history3.textContent = historyArray[1];
+		history4.textContent = historyArray[0];
+		historyBorder();
+	});
+};
+
+const histories = [history1, history2, history3, history4];
+const historiesBorder = [history1border, history2border, history3border, history4border];
+
+function historyBorder() {
+	for (const history of histories) {
+		if (
+			history.textContent === '✊ˣ✊' ||
+			history.textContent === '✋ˣ✋' ||
+			history.textContent === '✌ˣ✌') {
+			historiesBorder[histories.indexOf(history)].setAttribute('class', 'history draw');
+		}
+		else if (
+			history.textContent === '✊ˣ✌' ||
+			history.textContent === '✋ˣ✊' ||
+			history.textContent === '✌ˣ✋') {
+			historiesBorder[histories.indexOf(history)].setAttribute('class', 'history win');
+		} 
+		else if (
+			history.textContent === '✊ˣ✋' ||
+			history.textContent === '✋ˣ✌' ||
+			history.textContent === '✌ˣ✊') {
+			historiesBorder[histories.indexOf(history)].setAttribute('class','history lose');
+		}
+	}
+}

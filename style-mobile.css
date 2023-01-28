@@ -262,3 +262,21 @@ button {
 .player-score {
 	grid-row: 4/5;
 }
+
+.win {
+	border-style: solid;
+	border-color: blue;
+	border-width: 2px;
+}
+
+.draw {
+	border-style: solid;
+	border-color: yellow;
+	border-width: 2px;
+}
+
+.lose {
+	border-style: solid;
+	border-color: red;
+	border-width: 2px;
+}
