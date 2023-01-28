@@ -1,3 +1,47 @@
+// game start / end
+
+const main = document.querySelector('main');
+const rule = document.querySelector('.description-container');
+const start = document.querySelector('.start');
+const startBtn = document.querySelector('.start button');
+
+startBtn.addEventListener('click', () => gameStart());
+
+start.style.display = 'flex';
+main.style.display = 'none';
+rule.style.display = 'none';
+
+function gameStart() {
+	main.style.display = 'grid';
+	rule.style.display = 'grid';
+	start.style.display = 'none';
+};
+
+const end = document.querySelector('.end');
+const endPara = document.querySelector('.end p');
+const endBtn = document.querySelector('.end button');
+endBtn.addEventListener('click', () => {
+	window.location = 'index.html';
+});
+
+end.style.display = 'none';
+
+function gameEnd() {
+	main.style.display = 'none';
+	rule.style.display = 'none';
+	end.style.display = 'flex';
+
+	if (playerScore.textContent === computerScore.textContent) {
+		endPara.textContent = 'It\'s shockingly a draw!';
+	}
+	else if (playerScore.textContent >= computerScore.textContent) {
+		endPara.textContent = 'You win!';
+	}
+	else {
+		endPara.textContent = 'Sadly, you lost the game.';
+	};
+};
+
 // button selectors
 
 const btnRock = document.querySelector('.rock');
@@ -60,39 +104,6 @@ function playRound(playerSelection, computerSelection) {
 	};
 };
 
-function game() {
-	let result;
-	let score;
-	let winScore = 0;
-	let loseScore = 0;
-	let drawScore = 0;
-
-	for (i = 0; i < 5; i++) {
-		result = playRound();
-		score = String(result);
-		console.log(result);
-		if (score.includes('win')) {
-			winScore++;
-		}
-		else if (score.includes('lose')) {
-			loseScore++;
-		}
-		else if (score.includes('draw')) {
-			drawScore++;
-		};
-	};
-
-	if (winScore > loseScore) {
-		console.log(`You win with a score of ${winScore} wins and ${loseScore} loses`);
-	}
-	else if (loseScore > winScore) {
-		console.log(`You lose with a score of ${winScore} wins and ${loseScore} loses`);
-	}
-	else if (drawScore === 5 || winScore === loseScore) {
-		console.log(`It's shockingly a draw!`);
-	};
-};
-
 // history selectors
 
 const history1 = document.querySelector('.history-1 p');
@@ -119,6 +130,9 @@ for (const btn of buttons) {
 		history3.textContent = historyArray[1];
 		history4.textContent = historyArray[0];
 		historyBorder();
+		if (playerScore.textContent >= 5 || computerScore.textContent >= 5) {
+			gameEnd();
+		}
 	});
 };
 
