@@ -57,30 +57,26 @@ btnScissors.addEventListener('click', () => {
 
 // history / result log
 
+historyArray = ['','','',''];
+
 for (const btn of buttons) {
 	btn.addEventListener('click', () => {
-		if (historyArray.length > 4) {
 			historyArray.splice(0,1);
 			history1.textContent = historyArray[3];
 			history2.textContent = historyArray[2];
 			history3.textContent = historyArray[1];
 			history4.textContent = historyArray[0];
-		}
-		else {
-		history1.textContent = historyArray[0];
-		history2.textContent = historyArray[1];
-		history3.textContent = historyArray[2];
-		history4.textContent = historyArray[3];
-		};
-	})
+			console.log(historyArray);
+	});
 };
 
 // game
 
 function getComputerChoice() {
-	let random = (Math.random() * 2).toFixed(0);
+	let random = (Math.floor(Math.random() * 3));
 	let computerHand = ['rock', 'paper', 'scissors'];
 	return computerHand[random];
+	console.log(random);
 };
 
 function playRound(playerSelection, computerSelection) {
