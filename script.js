@@ -19,41 +19,20 @@ let newResult;
 let lastResult;
 let historyArray = [];
 
-btnRock.addEventListener('click', () => {
-	clickedButton = 'rock';
-	bgPlayer.textContent = '✊';
+// button clicks
 
-	newResult = `✊ˣ${playRound()}`;
+function buttonClickResult(button, buttonIcon) {
+	clickedButton = button;
+	bgPlayer.textContent = buttonIcon;
 	bgResults = [];
+	newResult = `${buttonIcon}ˣ${playRound()}`;
 	bgResults.push(newResult);
-
 	return historyArray.push(bgResults[0]);
-	}
-);
+}
 
-btnPaper.addEventListener('click', () => {
-	clickedButton = 'paper';
-	bgPlayer.textContent = '✋';
-	
-	newResult = `✋ˣ${playRound()}`;
-	bgResults = [];
-	bgResults.push(newResult);
-
-	return historyArray.push(bgResults[0]);
-	}
-);
-
-btnScissors.addEventListener('click', () => {
-	clickedButton = 'scissors';
-	bgPlayer.textContent = '✌';
-	
-	newResult = `✌ˣ${playRound()}`;
-	bgResults = [];
-	bgResults.push(newResult);
-
-	return historyArray.push(bgResults[0]);
-	}
-);
+btnRock.addEventListener('click', () => buttonClickResult('rock', '✊'));
+btnPaper.addEventListener('click', () => buttonClickResult('paper', '✋'));
+btnScissors.addEventListener('click', () => buttonClickResult('scissors', '✌'));
 
 // history / result log
 
@@ -66,9 +45,9 @@ for (const btn of buttons) {
 			history2.textContent = historyArray[2];
 			history3.textContent = historyArray[1];
 			history4.textContent = historyArray[0];
-			console.log(historyArray);
 	});
 };
+
 
 // game
 
@@ -76,7 +55,6 @@ function getComputerChoice() {
 	let random = (Math.floor(Math.random() * 3));
 	let computerHand = ['rock', 'paper', 'scissors'];
 	return computerHand[random];
-	console.log(random);
 };
 
 function playRound(playerSelection, computerSelection) {
