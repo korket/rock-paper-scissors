@@ -249,6 +249,7 @@ button {
 .score {
 	display: grid;
 	height: 4vh;
+	align-items: center;
 }
 
 .score p {
