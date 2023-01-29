@@ -14,6 +14,7 @@ rule.style.display = 'none';
 function gameStart() {
 	main.style.display = 'grid';
 	rule.style.display = 'grid';
+  historyContainer.style.display = 'grid';
 	start.style.display = 'none';
 };
 
@@ -24,11 +25,13 @@ endBtn.addEventListener('click', () => {
 	window.location = 'index.html';
 });
 
+
 end.style.display = 'none';
 
 function gameEnd() {
 	main.style.display = 'none';
 	rule.style.display = 'none';
+	historyContainer.style.display = 'none';
 	end.style.display = 'flex';
 
 	if (playerScore.textContent === computerScore.textContent) {
@@ -158,3 +161,24 @@ function historyBorder() {
 		}
 	}
 };
+
+// desktop-ui
+
+const historyContainer = document.querySelector('.history-container');
+const body = document.querySelector('body');
+const bgContainer = document.querySelector('.battleground-container');
+
+historyContainer.style.display = 'none';
+
+function wideScreenFunction() {
+	if (wideScreen.matches) {
+		body.appendChild(historyContainer);
+	} 
+	else {
+		bgContainer.appendChild(historyContainer);
+	}
+};
+
+const wideScreen = window.matchMedia('(min-width: 1000px)');
+wideScreenFunction();
+wideScreen.addEventListener('change', () => wideScreenFunction());
